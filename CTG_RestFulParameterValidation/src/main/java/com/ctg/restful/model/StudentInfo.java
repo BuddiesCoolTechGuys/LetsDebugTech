@@ -3,33 +3,36 @@ package com.ctg.restful.model;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 import org.springframework.format.annotation.NumberFormat;
 
+import com.ctg.restful.Group;
+
 public class StudentInfo {
 
-	@NotNull(message = "Id should not be empty")
 	@Min(3)
 	private int id;
 	
-	@NotEmpty(message = "First Name should not be empty")
-	@Size(min=2, max=30) 
+	@NotEmpty(message = "{student.firstName.required}")
+	@Size(min=2, max=30, message= "{student.firstName.size.required}") 
 	private String firstName;
 	
-	@NotEmpty(message = "Last Name should not be empty")
+	@NotEmpty(message = "{student.lastName.required}")
 	@Size(min=2, max=30) 
 	private String lastName;
 	
 	@NotEmpty 
-	@Email(message = "EmailId must be valid format")
+	@Email(message = "{student.emailId.required}")
 	private String emailAddress;
 	
-	@Pattern(regexp = "\\d{10}", message = "Phone Number format is wrong")
+	@Pattern(regexp = "\\d{10}", message = "{student.phoneNumber.required}")
 	@NumberFormat
 	private String phoneNumber;
+	
+	@Group
+	private String courseGroup;
 
 	public int getId() {
 		return id;
@@ -69,6 +72,14 @@ public class StudentInfo {
 
 	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
+	}
+
+	public String getCourseGroup() {
+		return courseGroup;
+	}
+
+	public void setCourseGroup(String courseGroup) {
+		this.courseGroup = courseGroup;
 	}
 
 }
