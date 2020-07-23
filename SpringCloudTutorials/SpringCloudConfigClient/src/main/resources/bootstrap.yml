@@ -1,0 +1,8 @@
+spring:
+  application:
+    name: cloud-config
+  profiles:    active:    - sit  
+  cloud:    config:      uri:      - http://localhost:9005
+server:  port: 9006
+  
+  
