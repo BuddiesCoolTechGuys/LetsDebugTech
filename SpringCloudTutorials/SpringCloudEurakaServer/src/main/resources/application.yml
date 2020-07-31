@@ -1,0 +1,14 @@
+server:
+  port: 9000   #Euraka server port default port (8761)
+  
+eureka:
+  instance:
+    hostname: localhost   
+    
+  client:
+    register-with-eureka: false   #This is Euraka Register itself. So, informing to the server to not register itself.
+    fetch-registry: false  
+    
+    #Euraka server URL for monitoring     
+    service-url:
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
