@@ -1,0 +1,14 @@
+server:
+  port: 9002    #Custom port
+ 
+#Registering the application instance in the Euraka server
+eureka:         
+    client:
+      service-url:
+        defaultZone: http://localhost:9000/eureka/
+        
+#Current Application Name which will be registered in the euraka server
+spring:     
+  application:
+    name: cart-service
+
